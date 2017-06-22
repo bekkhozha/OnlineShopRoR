@@ -1,0 +1,8 @@
+<%= simple_form_for @product,:html => {:multipart => true} do |f|%>
+  <%= f.input :title, label: "Product Title"%>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :discount %>
+  <%= f.input :available %>
+  <%= f.button :submit %>
+<% end %>
