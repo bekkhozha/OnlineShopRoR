@@ -10,11 +10,10 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
 
-       <p class="navbar-text pull-right">
+       <header class="navbar-form  ">
+         <div class="navbar-right">
        <% if user_signed_in? %>
          Logged in as <strong><%= current_user.email %></strong>.
          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
@@ -23,7 +22,11 @@
          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
        <% end %>
-       </p>
-       <%= yield %>
+     </div>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+    </header>
+    <%= yield %>
   </body>
 </html>

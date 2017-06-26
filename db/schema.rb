@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170625135347) do
+ActiveRecord::Schema.define(version: 20170626055632) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.integer "price"
+    t.integer "category_id"
     t.integer "discount", default: 0
     t.boolean "available", default: true
     t.datetime "created_at", null: false
@@ -35,6 +36,12 @@ ActiveRecord::Schema.define(version: 20170625135347) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "lastname"
+    t.string "phone"
+    t.string "gender"
+    t.integer "age"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

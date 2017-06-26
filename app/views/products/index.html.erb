@@ -1,4 +1,20 @@
-<% @products.each do |product| %>
-  <h2><%= link_to product.title, product_path(product) %></h2>
-<% end %>
-<%= link_to "Add book", new_product_path(@products)%>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+
+      <div class="col-sm-6 col-md-4">
+        <a  class = "" href = "<%= product_path(product)%>">
+          <div class="thumbnail">
+            <h2 class = "center-text"><%= product.title%></h2>
+            <div class="caption">
+              <h3>Here have to be name</h3>
+              $ <%= product.price%>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    <% end %>
+  </div>
+  <%= link_to "Add product", new_product_path(@products)%>
+</div>
