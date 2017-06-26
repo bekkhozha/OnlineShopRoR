@@ -1,5 +1,4 @@
-<% @products.each do |pro| %>
-  <h2><%= pro.title%></h2>
-  <h4><%= pro.description%></h4>
-  <h4><%= pro.price%></h4>
+<% @products.each do |product| %>
+  <h2><%= link_to product.title, product_path(product) %></h2>
 <% end %>
+<%= link_to "Add book", new_product_path(@products)%>
