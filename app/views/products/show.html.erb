@@ -1,4 +1,9 @@
 <h2><%= @product.title %></h2>
+<p><%= @product.description %></p>
+<p><%= @product.price %></p>
+<p><%= @product.discount %></p>
+<p><%= @product.available %></p>
+<p><%= @product.category_id %></p>
 <%= link_to "Back", root_path%>
 <%= link_to "Edit", edit_product_path(@product)%>
 <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm:"Are you sure?"}%>
