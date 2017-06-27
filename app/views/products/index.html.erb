@@ -16,7 +16,9 @@
 
     <% end %>
   </div>
+  <% if current_user && current_user.admin? %>
   <%= link_to "Add product", new_product_path(@products)%>
   |
   <%= link_to "Add category", new_category_path(@categories), class:'navbar-link'%>
+  <% end %>
 </div>
