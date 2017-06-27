@@ -4,14 +4,19 @@ class ProductsController < ApplicationController
     @products = Product.all.order('created_at DESC')
   end
   def new
-    @product = Product.new
+    if current_user.admin?
+        @product = Product.new
+    end
+
   end
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to root_path
-    else
-      render 'new'
+    if current_user.admin?
+      @product = Product.new(product_params)
+      if @product.save
+        redirect_to root_path
+      else
+        render 'new'
+      end
     end
   end
 
@@ -37,6 +42,8 @@ class ProductsController < ApplicationController
      params.require(:product).permit(:title,:description,:price,:discount,:available, :category_id)
    end
    def find_product
-     @product = Product.find(params[:id])
+     if current_user.admin?
+        @product = Product.find(params[:id])
+     end
    end
 end
