@@ -1,26 +1,23 @@
 class CategoriesController < ApplicationController
-    before_action :find_category, only: [:show,:edit,:update,:destroy]
+    before_action :find_category, only: [:show,:destroy,:edit,:update]
+    before_action :check_admin, only: [:show,:index,:edit,:destroy,:new]
+
   def index
-    @categories = Category.all.order("created_at DESC")
+      @categories = Category.all.order("created_at DESC")
   end
   def new
-    if current_user.admin?
-      @category = Category.new
-    end
+        @category = Category.new
   end
 
   def create
-    if current_user.admin?
       @category = Category.new(category_params)
       if @category.save
         redirect_to root_path
       else
         render 'new'
       end
-    end
   end
   def show
-    # @category = Category.find(params[:id])
   end
   def edit
   end
@@ -37,8 +34,6 @@ class CategoriesController < ApplicationController
      params.require(:category).permit(:title,:parent_id)
    end
    def find_category
-     if current_user.admin?
        @category = Category.find(params[:id])
-     end
-   end
+    end
 end

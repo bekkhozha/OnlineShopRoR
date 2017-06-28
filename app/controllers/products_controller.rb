@@ -1,23 +1,25 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show,:edit,:update,:destroy]
+  before_action :find_product, only: [:show,:destroy,:edit,:update]
+  before_action :check_admin, only: [:edit,:new]
   def index
-    @products = Product.all.order('created_at DESC')
+    if params[:category].blank?
+      @products = Product.all.order('created_at DESC')
+    else
+      @category_id = Category.find_by(title: params[:category]).id
+      @products = Product.where(:category_id => @category_id).order("created_at DESC")
+    end
   end
   def new
-    if current_user.admin?
         @product = Product.new
     end
 
-  end
   def create
-    if current_user.admin?
       @product = Product.new(product_params)
       if @product.save
         redirect_to root_path
       else
         render 'new'
       end
-    end
   end
 
   def show
@@ -42,8 +44,6 @@ class ProductsController < ApplicationController
      params.require(:product).permit(:title,:description,:price,:discount,:available, :category_id)
    end
    def find_product
-     if current_user.admin?
-        @product = Product.find(params[:id])
-     end
+       @product = Product.find(params[:id])
    end
 end
