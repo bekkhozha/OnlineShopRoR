@@ -1,5 +1,5 @@
 <%= simple_form_for @category,:html => {:multipart => true} do |f|%>
-  <%= f.input :title, label: "Category Title"%>
+  <%= f.input :title, label: "Category Title",required:true%>
   <%= f.input :parent_id %>
   <%= f.button :submit %>
 <% end %>
