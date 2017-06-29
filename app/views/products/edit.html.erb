@@ -1,2 +1,7 @@
 <h1>Edit Page</h1>
+<% if @product.errors.any?%>
+  <% @product.errors.full_messages.each do |m|%>
+  <h2> <%= m%> </h2>
+  <%end%>
+<%end%>
 <%= render 'form'%>

@@ -5,5 +5,6 @@
   <%= f.input :discount %>
   <%= f.input :available %>
   <%= f.input :category_id, collection: Category.get_parents ,placeholder:"sds"%>
+  <%= f.file_field :image, as: :file%>
   <%= f.button :submit %>
 <% end %>
