@@ -26,10 +26,6 @@
           <ul class="nav navbar-nav">
             <% if current_user && current_user.admin? %>
             <li>
-            <%= link_to "Add product", new_product_path(@products)%>
-            </li>
-
-            <li>
             <%= link_to "Add category", new_category_path(@categories), class:'navbar-link'%>
             </li>
             <% end %>
